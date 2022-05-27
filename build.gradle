@@ -1,0 +1,40 @@
+plugins {
+    id "com.github.johnrengelman.shadow" version "7.1.2"
+    id "java"
+}
+
+group 'me.piggyster'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+    maven {
+        url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/'
+        content {
+            includeGroup 'org.bukkit'
+            includeGroup 'org.spigotmc'
+        }
+    }
+    maven { url = 'https://oss.sonatype.org/content/repositories/snapshots' }
+    maven { url = 'https://oss.sonatype.org/content/repositories/central' }
+    maven { url = 'https://repo.codemc.org/repository/maven-public/' }
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.2'
+
+    compileOnly 'org.spigotmc:spigot-api:1.18.1-R0.1-SNAPSHOT'
+    implementation 'de.tr7zw:item-nbt-api-plugin:2.9.2'
+    implementation 'mysql:mysql-connector-java:8.0.29'
+    implementation 'com.h2database:h2:2.1.212'
+    implementation fileTree(dir: 'libs', include: '*.jar')
+}
+
+shadowJar {
+    archiveBaseName.set("PiggyAPI-${project.version}")
+    archiveClassifier.set('')
+    archiveVersion.set('')
+}
+

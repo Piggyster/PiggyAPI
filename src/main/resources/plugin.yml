@@ -1,0 +1,5 @@
+name: PiggyAPI
+version: ${project.version}
+author: Piggyster
+api-version: 1.17
+main: me.piggyster.api.PiggyAPIPlugin
